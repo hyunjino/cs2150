@@ -1,0 +1,43 @@
+C00A 000	jmp 	start 	skip around the variables
+0000 001 x 	dw 	0 	int i
+0000 002 y 	dw 	0 	int x
+0000 003 z 	dw 	0 	int y
+0001 004 one 	dw 	1
+0000 005 zero 	dw 	0
+0000 006 sum			leave space for changes
+0000 007
+0000 008
+0000 009
+1000 00A start 	readkb		read x
+4001 00B 	store 	x
+1000 00C 	read
+4002 00D 	store 	y
+1000 00E 	read
+4003 00F	store	z
+3006 010	load 	sum 
+5001 011	add	x 
+4006 012 	store 	sum	
+3006 013	load 	sum	
+5002 014	add	y
+4006 015 	store 	sum
+3006 016	load 	sum	 	
+5003 017	add	x
+4006 018	store sum
+3006 019	load sum 
+1800 01A	output sum
+D020 01B 	if   sum==0 	jump to 020
+C027 01C	jump to 27
+0000 01D
+0000 01E
+0000 01F
+3001 020	load x
+1800 021	output x
+3002 022	load y
+1800 023	output y
+3003 024	load z
+1800 025	output z
+C02A 026	jump to done
+3005 027	load 0
+4006 028	store sum (make sum = 0)
+C00A 029	go to start
+0000 02A	done

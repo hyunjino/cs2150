@@ -1,0 +1,88 @@
+C00A 000	jmp 	start 	skip around the variables
+0000 001 zero 	dw 	1
+0001 002 one	dw	0
+000A 003 n	dw	10	
+0000 004 i	dw	0
+0000 005 j			
+0000 006 temp
+3090 007 ldit
+4090 008 strit			
+6000 009 subiit
+3002 00A	load	1	reading/storing the array //////////////
+4004 00B 	store 	i	
+3008 00C 	load	strit
+4018 00D 	store	doit	
+3003 00E 	load 	n
+6004 00F 	sub 	i
+E01A 010	jmpl	to first for loop
+3004 011 	load 	i
+5002 012	add 	1
+4004 013 	store 	i
+3018 014 	load 	doit
+5002 015 	add  	1	
+4018 016 	store 	doit
+1000 017 	readH
+0000 018 	doit
+C00E 019 	jump	 to beginning of reading/storing /////////
+3002 01A 	load	 1  	 reordering
+4004 01B 	store 	 i
+3003 01C 	load 	 n
+4005 01D 	store 	 j
+3003 01E 	load 	 n	BEGINNING OF FIRST FOR LOOP
+6004 01F	sub 	 i
+E047 020 	jmpl	 to printing out array
+3005 021	load	 j	BEGINNING OF SECOND FOR LOOP
+6004 022	sub	 i
+E043 023	jmpl	 to i++
+3007 024	load 	 ldit
+5005 025	add	 j
+6000 026 	sub 	 1
+4036 027	store	 doit1
+403B 028	store	 doit3
+4009 029	load 	 subit
+5005 02A	add	 j
+4037 02B	store	 doit2
+3007 02C	load	 ldit
+5005 02D	add	 j
+4039 02E	store	 doit4
+3008 02F	load	 strit
+5005 030	add	 j
+403C 031	store	 doit6
+3008 032	load	 strit
+5005 033	add	 j
+6002 034	sub	 1
+403E 035	store	 doit7
+0000 036	doit1
+0000 037	doit2
+E03F 038	jmpl	to j--
+0000 039	doit4
+4006 03A	store	temp
+0000 03B	doit3
+0000 03C	doit6
+3006 03D	load	temp
+0000 03E	doit7
+3005 03F	load	j	j--
+6002 040	sub	1
+4005 041	store 	j
+C021 042	jump 	to beginning of second loop
+3004 043	load 	i  	i++
+5002 044	add 	1
+4004 045	store	i
+C01E 046	jump  to beginning of the first lop
+3002 047	load  1	 	   //print out array ////////////////
+4004 048	store  i
+3007 049	load   ldit
+4051 04A	store	doit
+3003 04B	load 	n
+6004 04C	sub 	i
+E057 04D	jmpl	to exit
+3051 04E	load	doit
+5002 04F	add	1
+4051 050	store	doit
+0000 051	doit
+1800 052	output
+3004 053	load	i
+5002 054	add	1
+4004 055	store 	i
+C047 056	jump	to beginning of printing out this array
+0000 057	exit

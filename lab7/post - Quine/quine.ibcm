@@ -1,0 +1,25 @@
+C006 000 jump  to start
+0000 001 counter 
+0001 002 one
+0000 003 zero
+0018 004 size
+3002 005 ldit
+3003 006 load  zero // start
+6001 007 sub   counter
+E00D 008 jmpl   to halt if neg
+3000 009 load  000
+1800 00A print
+3001 00B load  counter
+1800 00C print 
+3004 00D load  size
+6001 00E sub   counter
+D019 00F if equals 0 jump to exit
+3005 010 load ldit
+5001 011 add counter
+4013 012 store doit
+0000 013 doit
+1800 014 print
+3001 015 load counter
+5002 016 add 1
+4001 017 store counter
+C000 018 jump to beginning

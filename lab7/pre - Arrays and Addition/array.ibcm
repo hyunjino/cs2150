@@ -1,0 +1,59 @@
+C00A 000	jmp 	start 	skip around the variables
+0000 001 i 	dw 	0 	int i
+0000 002 n	dw	0	int n
+0001 003 one	dw	1	
+0000 004 zero	dw	0
+4060 005 stit		
+3060 006 ldit
+0000 007 
+0000 008 			
+0000 009
+1000 00A	start	readH
+4002 00B 	store 	n	
+3003 00C 	load	one
+4001 00D 	store	i (i==1)	
+3005 00E 	load 	stit
+401A 00F 	store 	doit
+3002 010	load 	n
+6001 011 	sub 	i	
+E01C 012	jmpl	jump to next loop (020)////
+3001 013 	load	i
+5003 014 	add 	1
+4001 015 	store 	i
+301A 016 	load 	doit
+5003 017 	add	1
+401A 018 	store 	doit
+1000 019 	readH
+0000 01A 	doit	
+C010 01B 	jump	to 010
+3003 01C 	load 	1		make i = 1
+4001 01D 	store 	i
+3006 01E 	load	ldit
+4026 01F	store 	doit
+3002 020 	load 	n
+6001 021	sub	i
+E02C 022	jmp	jump to exit if it is neg
+3026 023	load	doit
+5003 024	add	1
+4026 025	store 	doit
+0000 026 	doit
+1800 027	output
+3001 028	load	i
+5003 029	add	1
+4001 02A	store 	i
+C020 02B	jump 	jump to loop 020
+3026 02C		load 	doit
+4031 02D		store	doit ////////////
+3003 02E	load 	1
+6001 02F	sub	i
+D03A 030	jump	jump to xit if i is 0
+0000 031	doit
+1800 032	output
+3031 033	load	doit
+6003 034	sub	1
+4031 035		store	doit
+3001 036	load 	i
+6003 037	sub	1
+4001 038	store 	i
+C02E 039	jump	jump to loop 028
+0000 03A	xit	halt
